@@ -4,6 +4,8 @@ dot_dir=~/.dotfiles
 
 yay -S zsh neovim hyprland firefox ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed --no-confirm
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 chsh -s $(which zsh)
 
 sudo mkdir -p /wallpapers
