@@ -2,14 +2,15 @@
 
 dot_dir=~/.dotfiles
 
-yay -S zsh vi neovim hyprland firefox dolphin zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed -q
+yay -S zsh vi neovim hyprland firefox dolphin plymouth zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed -q
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 chsh -s $(which zsh)
 
-sudo mkdir -p /wallpapers
-sudo cp -r ./GrubThemes/. /boot/grub/themes 
+mkdir -p ~/Wallpapers
+sudo cp -r --update=none ./GrubThemes/. /boot/grub/themes 
+sudo cp -r --update=none ./PlymouthThemes/. /usr/share/plymouth/themes
 
 ln -sf $dot_dir/.gitconfig ~/.gitconfig 
 ln -sf $dot_dir/.zprofile ~/.zprofile   
@@ -20,3 +21,5 @@ ln -sf $dot_dir/kitty ~/.config/kitty
 ln -sf $dot_dir/nvim ~/.config/nvim
 ln -sf $dot_dir/waybar ~/.config/waybar
 ln -sf $dot_dir/rofi ~/.config/rofi
+
+sudo plymouth-set-default-theme -R hexagon_2
