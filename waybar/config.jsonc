@@ -27,7 +27,7 @@
         "format": "<span style=\"italic\">{}</span>"
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 21,
         "spacing": 10
     },
     "clock": {
@@ -54,8 +54,9 @@
     "network": {
         // "interface": "wlp2s0", // (Optional) To force the use of this interface
         "format-wifi": "{essid} {signalStrength}% ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        "format-disconnected": "Disconnected ⚠"
+        "format-ethernet": "Ethernet ",
+        "format-disconnected": "Disconnected ⚠",
+	"tooltip-format":"{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
         //"scroll-step": 1,
