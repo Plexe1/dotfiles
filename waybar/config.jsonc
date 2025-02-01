@@ -76,12 +76,16 @@
     "custom/media": {
         "format": "{icon} {}",
         "return-type": "json",
-        "max-length": 40,
+        "max-length": 25,
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+            "spotify": " ",
+            "default": " "
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.sh" // Script in resources folder   }
-	}
+        "exec": "$HOME/.config/waybar/mediaplayer.sh 2> /dev/null",
+        "on-click": "playerctl play-pause" },
+"custom/power": {
+		"format": " ",
+		"on-click": "wlogout"
+	},
 }

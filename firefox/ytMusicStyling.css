@@ -1,0 +1,179 @@
+/* ==UserStyle==
+@name          youtube music modern
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    Sleek Modern styling for youtube music
+@author         Plexe1
+==/UserStyle== */
+@-moz-document url-prefix("https://music.youtube.com/") {
+	:root {
+		--main-color: #00adee;
+		--main-background: #111;
+		--second-background: #b1beff6b;
+		--hover-background: #232323;
+		--accent-color: #fff;
+		/* --accent-color: #54d387; */
+		--main-text: #fff;
+		--dimmer-text: #bfbfbf;
+		--shadow: 0 1px 0.5px rgba(0, 0, 0, .3);
+		--tint-color: #00000050;
+	}
+
+	ytmusic-logo.ytmusic-nav-bar {
+		height: 50px;
+	}
+
+	.logo.ytmusic-logo {
+		/* background: var(--main-color); */
+		/* filter: opacity(0); */
+		/* border-radius: 2px; */
+		content: url(https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png);
+		height: 55px;
+		padding-left: 50%;
+	}
+
+	/* player dimmer text */
+	.content-info-wrapper.ytmusic-player-bar .byline.ytmusic-player-bar,
+	yt-formatted-string[ellipsis-truncate-styling] a.yt-formatted-string,
+	.secondary-flex-columns.ytmusic-responsive-list-item-renderer .flex-column.ytmusic-responsive-list-item-renderer {
+		color: var(--dimmer-text) !important;
+	}
+
+	/*  player title */
+	/* .content-info-wrapper.ytmusic-player-bar .title.ytmusic-player-bar {
+color: var(--main-text);
+} */
+	/* badges 'E'  pin etc */
+	yt-icon.ytmusic-inline-badge-renderer {
+		color: var(--second-background);
+		filter: drop-shadow(1px, 1px, 10px, var(--second-background));
+	}
+
+	/* main text front page*/
+	/* .title.ytmusic-two-row-item-renderer {
+color: var(--main-text) !important;
+} */
+	/* lyrics and Descriptions*/
+	.description.ytmusic-description-shelf-renderer {
+		display: block;
+		font-family: Roboto, Noto Naskh Arabic UI, Arial, sans-serif;
+		font-size: 15px;
+		font-weight: 400;
+		color: var(--main-text) !important;
+	}
+
+	ytmusic-app-layout > [slot=player-page] {
+		transition: transform 1s cubic-bezier(0.3, 0, 0.3, 1);
+	}
+
+	/* Page Visibility */
+	#content {
+		visibility: visible !important;
+	}
+
+	#content ytmusic-browse-response {
+		display: block;
+	}
+
+	#contents.ytmusic-section-list-renderer {
+		background-color: var(--main-background);
+	}
+
+	/*The background */
+	#player-page {
+		backdrop-filter: blur(10px) brightness(0.5);
+		background: var(--tint-color);
+	}
+
+	/* Menu on top */
+	#nav-bar-background {
+		backdrop-filter: blur(10px) brightness(0.5);
+		background: var(--tint-color)!important;
+	}
+
+	#nav-bar-divider {
+		display: none;
+	}
+
+	/* Player panel */
+	#player-bar-background {
+		backdrop-filter: blur(10px) brightness(0.5);
+		background: var(--tint-color) !important;
+	}
+
+	ytmusic-player-page {
+		--ytmusic-player-page-vertical-padding: 12px;
+		--ytmusic-player-page-horizontal-padding: 8px;
+		--ytmusic-player-page-content-gap: 6px;
+		--ytmusic-player-page-side-panel-width: 30%;
+	}
+
+	ytmusic-player-bar {
+		background: transparent;
+	}
+
+	/* Cover (photo) */
+	yt-img-shadow[object-fit=COVER] img.yt-img-shadow {
+		border-radius: 25px;
+	}
+
+	ytmusic-player {
+		background: transparent;
+	}
+
+	/* Cover (video) */
+	.song-media-controls.ytmusic-player {
+		border-radius: 25px;
+	}
+
+	.html5-video-player:not(.ytp-transparent) {
+		border-radius: 25px;
+		background: transparent;
+	}
+
+	/* Tracks */
+	ytmusic-player-queue-item {
+		transition: .1s linear;
+		border-radius: 20px;
+
+		/* background: url(https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png) no-repeat; */
+		background-size: contain;
+	}
+
+	/* playing track */
+	ytmusic-player-queue-item[play-button-state=playing],
+	ytmusic-player-queue-item[play-button-state=loading],
+	ytmusic-player-queue-item[play-button-state=paused] {
+		backdrop-filter: saturate(10) invert(1) brightness(.3);
+		/*  border-radius: 1px; */
+	}
+
+	/* Song progress slider */
+	#primaryProgress {
+		transition: 1s linear;
+	}
+
+	#progress-bar.ytmusic-player-bar {
+		/* --paper-slider-active-color: var(--accent-color) !important; */
+	}
+
+	#sliderKnob {
+		transition: 1s linear;
+	}
+
+	/* all buttons */
+	tp-yt-paper-icon-button {
+		transition: .2s linear;
+		/* background: url(https://upload.wikimedia.org/wikipedia/en/a/a6/Pok%C3%A9mon_Pikachu_art.png) no-repeat; */
+		background-size: contain;
+		/* filter: opacity(0); */
+	}
+
+	tp-yt-iron-icon.tp-yt-paper-icon-button {
+		filter: drop-shadow(2px 2px 1px var(-));
+	}
+
+	/* a {
+color:red !important;
+} */
+}

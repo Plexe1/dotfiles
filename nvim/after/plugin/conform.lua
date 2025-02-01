@@ -8,6 +8,8 @@ require("conform").setup({
 		rust = { "rustfmt" },
 		-- You can use a function here to determine the formatters dynamically
 		python = { "ruff" }, -- Use the "*" filetype to run formatters on all filetypes.
+		json = { "prettier" },
+		jsonc = { "prettier" },
 	},
 	-- Set this to change the default values when calling conform.format()
 	-- This will also affect the default values for format_on_save/format_after_save
