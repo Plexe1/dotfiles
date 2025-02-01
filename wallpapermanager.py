@@ -1,6 +1,6 @@
 import os
 import random
-PATH = os.path.expanduser('~')+"/wallpapers"
+PATH = os.path.expanduser('~')+"/Wallpapers"
 if not os.path.isdir(PATH):
     exit()
 files = os.listdir(PATH)
