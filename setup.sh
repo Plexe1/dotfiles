@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-dot_dir = ~/.dotfiles
+dot_dir=~/.dotfiles
 
 yay -S neovim hyprland firefox ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed --no-confirm
 
@@ -13,6 +13,6 @@ ln -sf $dot_dir/.zshrc ~/.zshrc
 ln -sf $dot_dir/.p10k.zsh ~/.p10k.zsh 
 ln -sf $dot_dir/hypr ~/.config/hypr 
 ln -sf $dot_dir/kitty ~/.config/kitty
-ln -sf $dot_dir/nvim ~/.config/nvim
+ln -sf $dot_dir/nvim ~/.config/nvimpacman pacman 
 ln -sf $dot_dir/waybar ~/.config/waybar
 ln -sf $dot_dir/rofi ~/.config/rofi
