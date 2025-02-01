@@ -2,8 +2,7 @@
 
 dot_dir = ~/.dotfiles
 
-sudo pacman -S neovim hyprland firefox ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire --noconfirm --needed
-yay -S --noconfirm zsh-theme-powerlevel10k-git --needed
+yay -S neovim hyprland firefox ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed --no-confirm
 
 sudo mkdir -p /wallpapers
 sudo cp -r ./GrubThemes/. /boot/grub/themes 
