@@ -2,7 +2,7 @@
 
 dot_dir=~/.dotfiles
 
-yay -S zsh vi neovim hyprland firefox zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed -q
+yay -S zsh vi neovim hyprland firefox dolphin zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed -q
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
