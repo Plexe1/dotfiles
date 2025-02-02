@@ -2,7 +2,7 @@
 
 dot_dir=~/.dotfiles
 
-yay -S zsh vi neovim hyprland firefox dolphin plymouth zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed -q
+yay -S zsh vi neovim hyprland sddm firefox dolphin plymouth zsh-autosuggestions zsh-autocomplete zsh-syntax-highlighting noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra ttf-jetbrains-mono-nerd kitty rofi waybar zsh swww swaync fastfetch grim slurp qt6-svg qt6-virtualkeyboard qt6-multimedia-ffmpeg qt4-wayland qt6-wayland xdg-desktop-portal-hyprland cliphist uwsm wireplumber pipewire zsh-theme-powerlevel10k-git --needed -q
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -23,3 +23,6 @@ ln -sf $dot_dir/waybar ~/.config/waybar
 ln -sf $dot_dir/rofi ~/.config/rofi
 
 sudo plymouth-set-default-theme -R hexagon_2
+
+sudo systemctl enable sddm.service
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/keyitdev/sddm-astronaut-theme/master/setup.sh)"
