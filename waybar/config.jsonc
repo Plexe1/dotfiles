@@ -16,9 +16,12 @@
     "title<.*youtube music.*>": "", // Windows whose titles contain "youtube"
     "class<firefox>": "", // Windows whose classes are "firefox"
     "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
-    "title<n?vim.*>": "",
+    "class<firefox> title<.*whatsapp.*>": "",
+    "title<n?vim.*>": "",
     "kitty": "",
-	"class<discord>": ""
+    "class<discord>": "",
+    "class<steam>": "",
+    "class<org.kde.dolphin>": ""
 	}
 },
 "hyprland/window": {"format": "{class}"
