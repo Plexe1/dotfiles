@@ -12,15 +12,15 @@ mkdir -p ~/Wallpapers
 sudo cp -r --update=none ./GrubThemes/. /boot/grub/themes 
 sudo cp -r --update=none ./PlymouthThemes/. /usr/share/plymouth/themes
 
-ln -sf $dot_dir/.gitconfig ~/.gitconfig 
-ln -sf $dot_dir/.zprofile ~/.zprofile   
-ln -sf $dot_dir/.zshrc ~/.zshrc   
-ln -sf $dot_dir/.p10k.zsh ~/.p10k.zsh 
-ln -sf $dot_dir/hypr ~/.config/hypr 
-ln -sf $dot_dir/kitty ~/.config/kitty
-ln -sf $dot_dir/nvim ~/.config/nvim
-ln -sf $dot_dir/waybar ~/.config/waybar
-ln -sf $dot_dir/rofi ~/.config/rofi
+rm -rf ~/.gitconfig && ln -sf $dot_dir/.gitconfig ~/.gitconfig 
+rm -rf ~/.zprofile && ln -sf $dot_dir/.zprofile ~/.zprofile   
+rm -rf ~/.zshrc && ln -sf $dot_dir/.zshrc ~/.zshrc   
+rm -rf ~/.p10k.zsh && ln -sf $dot_dir/.p10k.zsh ~/.p10k.zsh 
+rm -rf ~/.config/hypr && ln -sf $dot_dir/hypr ~/.config/hypr 
+rm -rf ~/.config/kitty && ln -sf $dot_dir/kitty ~/.config/kitty
+rm -rf ~/.config/nvim && ln -sf $dot_dir/nvim ~/.config/nvim
+rm -rf ~/.config/waybar && ln -sf $dot_dir/waybar ~/.config/waybar
+rm -rf ~/.config/rofi && ln -sf $dot_dir/rofi ~/.config/rofi
 
 sudo plymouth-set-default-theme -R hexagon_2
 
