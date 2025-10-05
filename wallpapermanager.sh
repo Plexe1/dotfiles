@@ -2,11 +2,12 @@
 dir=~/Wallpapers
 names=wallpapers.txt
 height=1080
-if [ -e $names -a $(wc -l $names |  cut -c1) -gt 0 ]; then
-	read -r file < $names
-	sed -i '1d' $names
+if [[ -e "$names" && $(wc -l < "$names") -gt 0 ]]; then
+	read -r file < "$names"
+	sed -i '1d' "$names"
 	IFS=', ' read -r x y < <(hyprctl cursorpos)
-	swww img -t grow --transition-pos $x,$(($height - $y)) --transition-duration 1 $dir/$file
+	swww img -t grow --transition-pos $x,$(($height - $y)) --transition-duration 1 "$file"
 else
-	echo "$(ls $dir | shuf)" > "$names"
+	echo "$(find "$dir" | shuf)" > "$names"
+	notify-send "Reshuffling wallpapers"
 fi
