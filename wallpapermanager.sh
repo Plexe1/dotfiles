@@ -8,6 +8,6 @@ if [[ -e "$names" && $(wc -l < "$names") -gt 0 ]]; then
 	IFS=', ' read -r x y < <(hyprctl cursorpos)
 	swww img -t grow --transition-pos $x,$(($height - $y)) --transition-duration 1 "$file"
 else
-	echo "$(find "$dir" | shuf)" > "$names"
+	find "$dir" | shuf > "$names"
 	notify-send "Reshuffling wallpapers"
 fi
