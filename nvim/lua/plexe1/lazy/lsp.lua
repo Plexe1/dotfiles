@@ -27,66 +27,65 @@ return {
     require("fidget").setup({})
     require("mason").setup()
 
-    require('mason-lspconfig').setup({
+    require("mason-lspconfig").setup({
       ensure_installed = {
-        "tsserver",
         "lua_ls",
-        "ruff"
+        "ruff",
       },
       handlers = {
         function(server_name)
-          require('lspconfig')[server_name].setup({
+          require("lspconfig")[server_name].setup({
             capabilities = capabilities,
           })
         end,
         lua_ls = function()
-          require('lspconfig').lua_ls.setup({
+          require("lspconfig").lua_ls.setup({
             capabilities = capabilities,
             settings = {
               Lua = {
                 runtime = {
-                  version = 'LuaJIT'
+                  version = "LuaJIT",
                 },
                 diagnostics = {
-                  globals = { 'vim', 'love' },
+                  globals = { "vim", "love" },
                 },
                 workspace = {
                   library = {
                     vim.env.VIMRUNTIME,
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           })
-        end
-      }
+        end,
+      },
     })
 
-    local cmp = require('cmp')
+    local cmp = require("cmp")
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
     -- this is the function that loads the extra snippets to luasnip
     -- from rafamadriz/friendly-snippets
-    require('luasnip.loaders.from_vscode').lazy_load()
+    require("luasnip.loaders.from_vscode").lazy_load()
 
     cmp.setup({
       sources = {
-        { name = 'path' },
-        { name = 'nvim_lsp' },
-        { name = 'luasnip', keyword_length = 2 },
-        { name = 'buffer',  keyword_length = 3 },
+        { name = "path" },
+        { name = "nvim_lsp" },
+        { name = "luasnip", keyword_length = 2 },
+        { name = "buffer",  keyword_length = 3 },
       },
       mapping = cmp.mapping.preset.insert({
         -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
         -- ['<C-Space>'] = cmp.mapping.complete(),
       }),
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body)
+          require("luasnip").lsp_expand(args.body)
         end,
       },
     })
-  end
+  end,
 }

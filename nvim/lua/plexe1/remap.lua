@@ -1,4 +1,3 @@
-local which_key = require("which-key")
 local builtin = require("telescope.builtin")
 
 -- ======================================
@@ -9,29 +8,53 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("user_lsp_attach", { clear = true }),
   callback = function(event)
     local buf = event.buf
+    local opts = { buffer = buf, noremap = true, silent = true }
 
-    local mappings = {
-      -- Group header for LSP
-      { "<leader>l", group = "LSP", buffer = buf },
+    -- LSP actions
+    vim.keymap.set(
+      "n",
+      "<leader>a",
+      vim.lsp.buf.code_action,
+      vim.tbl_extend("force", opts, { desc = "Code action" })
+    )
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "References" }))
+    vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, vim.tbl_extend("force", opts, { desc = "Rename" }))
+    vim.keymap.set(
+      "n",
+      "<leader>lw",
+      vim.lsp.buf.workspace_symbol,
+      vim.tbl_extend("force", opts, { desc = "Workspace symbol" })
+    )
+    vim.keymap.set(
+      "n",
+      "<leader>ld",
+      vim.diagnostic.open_float,
+      vim.tbl_extend("force", opts, { desc = "Open diagnostic float" })
+    )
 
-      -- LSP actions
-      { "<leader>la", vim.lsp.buf.code_action, desc = "Code action", buffer = buf },
-      { "<leader>lr", vim.lsp.buf.references, desc = "References", buffer = buf },
-      { "<leader>ln", vim.lsp.buf.rename, desc = "Rename", buffer = buf },
-      { "<leader>lw", vim.lsp.buf.workspace_symbol, desc = "Workspace symbol", buffer = buf },
-      { "<leader>ld", vim.diagnostic.open_float, desc = "Open diagnostic float", buffer = buf },
+    -- Navigation
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+    vim.keymap.set(
+      "n",
+      "gl",
+      vim.diagnostic.open_float,
+      vim.tbl_extend("force", opts, { desc = "Open diagnostic float" })
+    )
+    vim.keymap.set(
+      "n",
+      "[",
+      vim.diagnostic.goto_prev,
+      vim.tbl_extend("force", opts, { desc = "Go to previous diagnostic" })
+    )
+    vim.keymap.set(
+      "n",
+      "]",
+      vim.diagnostic.goto_next,
+      vim.tbl_extend("force", opts, { desc = "Go to next diagnostic" })
+    )
 
-      -- Navigation
-      { "gd", vim.lsp.buf.definition, desc = "Go to definition", buffer = buf },
-      { "gl", vim.diagnostic.open_float, desc = "Open diagnostic float", buffer = buf },
-      { "[d", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic", buffer = buf },
-      { "]d", vim.diagnostic.goto_next, desc = "Go to next diagnostic", buffer = buf },
-
-      -- Hover
-      { "K", vim.lsp.buf.hover, desc = "Show hover information", buffer = buf },
-    }
-
-    which_key.add(mappings)
+    -- Hover
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Show hover information" }))
 
     -- Format on save
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -47,46 +70,53 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- Non-LSP Keymaps (global)
 -- ======================================
 
-which_key.add({
-  { "<C-d>", "<C-d>zz", desc = "Half page down and center" },
-  { "<C-u>", "<C-u>zz", desc = "Half page up and center" },
-  { "J", "mzJ`z", desc = "Join lines and keep cursor position" },
-  { "n", "nzzzv", desc = "Next search result and center" },
-  { "N", "Nzzzv", desc = "Previous search result and center" },
-  { "Q", "<nop>", desc = "Disable Ex mode" },
+local opts = { noremap = true, silent = true }
 
-  { "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "Toggle comment" },
-  { "<leader>e", vim.cmd.Ex, desc = "Open file explorer" },
-  { "<leader>p", '"_dP', desc = "Paste without overwrite" },
-  { "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Search and replace word under cursor" },
-})
+vim.keymap.set("n", "<C-d>", "<C-d>zz", vim.tbl_extend("force", opts, { desc = "Half page down and center" }))
+vim.keymap.set("n", "<C-u>", "<C-u>zz", vim.tbl_extend("force", opts, { desc = "Half page up and center" }))
+vim.keymap.set("n", "J", "mzJ`z", vim.tbl_extend("force", opts, { desc = "Join lines and keep cursor position" }))
+vim.keymap.set("n", "n", "nzzzv", vim.tbl_extend("force", opts, { desc = "Next search result and center" }))
+vim.keymap.set("n", "N", "Nzzzv", vim.tbl_extend("force", opts, { desc = "Previous search result and center" }))
+vim.keymap.set("n", "Q", "<nop>", vim.tbl_extend("force", opts, { desc = "Disable Ex mode" }))
+
+vim.keymap.set(
+  "n",
+  "<leader>/",
+  "<Plug>(comment_toggle_linewise_current)",
+  vim.tbl_extend("force", opts, { desc = "Toggle comment" })
+)
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex, vim.tbl_extend("force", opts, { desc = "Open file explorer" }))
+vim.keymap.set("n", "<leader>p", '"_dP', vim.tbl_extend("force", opts, { desc = "Paste without overwrite" }))
+vim.keymap.set(
+  "n",
+  "<leader>s",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  vim.tbl_extend("force", opts, { desc = "Search and replace word under cursor" })
+)
 
 -- ======================================
 -- Telescope (Find) Mappings
 -- ======================================
+vim.keymap.set("n", "<leader>ff", builtin.find_files, vim.tbl_extend("force", opts, { desc = "Find files" }))
 
-which_key.add({
-  { "<leader>f", group = "Find" },
-  { "<leader>ff", builtin.find_files, desc = "Find files" },
-  { "<leader>fg", builtin.git_files, desc = "Find git files" },
-  { "<leader>fl", builtin.live_grep, desc = "Live grep" },
-})
+vim.keymap.set("n", "<leader>fg", builtin.git_files, vim.tbl_extend("force", opts, { desc = "Find git files" }))
+vim.keymap.set("n", "<leader>fl", builtin.live_grep, vim.tbl_extend("force", opts, { desc = "Live grep" }))
 
 -- Find buffers via semicolon
-which_key.add({
-  { ";", builtin.buffers, desc = "Find buffers" },
-})
+vim.keymap.set("n", ";", builtin.buffers, vim.tbl_extend("force", opts, { desc = "Find buffers" }))
 
 -- ======================================
 -- Visual Mode Mappings
 -- ======================================
 
-which_key.add({
-  mode = { "v" },
-  { "J", ":m '>+1<CR>gv=gv", desc = "Move selection down" },
-  { "K", ":m '<-2<CR>gv=gv", desc = "Move selection up" },
-  { "<leader>/", "<Plug>(comment_toggle_linewise_visual)", desc = "Toggle comment" },
-})
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", vim.tbl_extend("force", opts, { desc = "Move selection down" }))
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", vim.tbl_extend("force", opts, { desc = "Move selection up" }))
+vim.keymap.set(
+  "v",
+  "<leader>/",
+  "<Plug>(comment_toggle_linewise_visual)",
+  vim.tbl_extend("force", opts, { desc = "Toggle comment" })
+)
 
 -- ======================================
 -- Misc
@@ -104,4 +134,3 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     colorscheme_hooks.apply_custom_highlights()
   end,
 })
-
